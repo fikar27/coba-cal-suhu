@@ -20,6 +20,17 @@ button {
     padding: 10px 20px;
     background-color: black;
     color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: brown;
+}
+
+button:active {
+    transform: translateY(3px);
+    background-color: rgb(122, 2, 2);
 }
 
 /* ID */
