@@ -1,32 +1,53 @@
+/* TAG */
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 header {
     background-color: blanchedalmond;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-left: 300px;
     margin-right: 300px;
     border-radius: 10px;
     padding: 1px;
 }   
 
+label {
+    font-size: 18px;
+    color: brown;
+}
+
+button {
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+}
+
+/* ID */
+#inputfield:focus {
+    border: solid rgb(0, 0, 0);
+}
+
 #inputfield {
     outline: none;
     border-radius: 10px;
     padding: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: solid rgb(161, 161, 161);
     
 }
 
+/* CLASS */
 .input {
     display: flex;
     flex-direction: column;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding: 5px 200px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-#inputfield:focus {
-    border: solid rgb(0, 0, 0);
+.areatombolinput {
+    margin-top: 10px;
 }
+
+
 
