@@ -1,0 +1,32 @@
+header {
+    background-color: blanchedalmond;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 300px;
+    margin-right: 300px;
+    border-radius: 10px;
+    padding: 1px;
+}   
+
+#inputfield {
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: solid rgb(161, 161, 161);
+    
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px 200px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#inputfield:focus {
+    border: solid rgb(0, 0, 0);
+}
+
