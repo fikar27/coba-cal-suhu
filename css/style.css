@@ -3,12 +3,14 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 header {
-    background-color: blanchedalmond;
     text-align: center;
+    color: white;
+    background-color: black;
     margin-left: 300px;
     margin-right: 300px;
     border-radius: 10px;
     padding: 1px;
+    outline-style:double
 }   
 
 label {
@@ -43,6 +45,7 @@ button {
     padding: 5px 200px;
     text-align: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 .areatombolinput {
