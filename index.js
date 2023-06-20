@@ -4,5 +4,7 @@ function tombol(){
     
     let hasil = parseInt (pertama) + parseInt (kedua);
     
-    document.write("hasilnya adalah " + hasil);
+    let div = document.getElementById("hasil")
+
+    div.innerHTML = "hasilnya adalah " + hasil;
 }
