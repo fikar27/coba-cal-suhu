@@ -9,15 +9,12 @@
       border: 2px solid #333;
       position: relative;
     }
-    #circle {
+    .circle {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       background-color: #ff6f61;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       display: none;
       cursor: pointer;
     }
@@ -27,15 +24,14 @@
   <h1>Click the Circle Game</h1>
   <p id="score">Score: 0</p>
   <div id="game-container">
-    <div id="circle"></div>
   </div>
 
   <script>
     var score = 0;
     var timeLeft = 10;
     var gameStarted = false;
-    var circle = document.getElementById('circle');
     var scoreDisplay = document.getElementById('score');
+    var gameContainer = document.getElementById('game-container');
 
     function startGame() {
       gameStarted = true;
@@ -43,7 +39,7 @@
       score = 0;
       scoreDisplay.textContent = 'Score: ' + score;
       startTimer();
-      showCircle();
+      createCircle();
     }
 
     function startTimer() {
@@ -60,14 +56,17 @@
     function endGame(timer) {
       clearInterval(timer);
       gameStarted = false;
-      circle.style.display = 'none';
+      gameContainer.removeEventListener('click', incrementScore);
       alert('Game Over! Your final score is ' + score);
     }
 
-    function showCircle() {
-      var container = document.getElementById('game-container');
-      var containerWidth = container.offsetWidth;
-      var containerHeight = container.offsetHeight;
+    function createCircle() {
+      var circle = document.createElement('div');
+      circle.classList.add('circle');
+      gameContainer.appendChild(circle);
+
+      var containerWidth = gameContainer.offsetWidth;
+      var containerHeight = gameContainer.offsetHeight;
       var circleSize = circle.offsetWidth;
 
       var maxX = containerWidth - circleSize;
@@ -79,18 +78,19 @@
       circle.style.left = randomX + 'px';
       circle.style.top = randomY + 'px';
       circle.style.display = 'block';
+
+      circle.addEventListener('click', incrementScore);
     }
 
     function incrementScore() {
       if (gameStarted) {
         score++;
         scoreDisplay.textContent = 'Score: ' + score;
-        circle.style.display = 'none';
-        showCircle();
+        gameContainer.innerHTML = '';
+        createCircle();
       }
     }
-
-    circle.addEventListener('click', incrementScore);
   </script>
+  <button onclick="startGame()">Start Game</button>
 </body>
 </html>
