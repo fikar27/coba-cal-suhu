@@ -21,9 +21,6 @@ var hintElement = document.getElementById("hint-text");
 var randomIndex = Math.floor(Math.random() * words.length);
 var selectedWord = words[randomIndex];
 
-// Tampilkan petunjuk kata
-hintElement.textContent = hints[selectedWord];
-
 // Membuat array dengan garis-garis untuk menampilkan kata yang belum ditebak
 var hiddenWord = [];
 for (var i = 0; i < selectedWord.length; i++) {
@@ -38,21 +35,11 @@ guessButton.addEventListener("click", function() {
   var guess = guessInput.value.toLowerCase();
 
   // Cek apakah tebakan benar
-  if (guess.length === 1 && selectedWord.includes(guess)) {
-    for (var j = 0; j < selectedWord.length; j++) {
-      if (selectedWord[j] === guess) {
-        hiddenWord[j] = guess;
-      }
-    }
-
-    // Perbarui tampilan kata yang belum ditebak
+  if (guess === selectedWord) {
+    hiddenWord = selectedWord.split("");
     wordDisplay.textContent = hiddenWord.join(" ");
-
-    // Cek apakah semua huruf sudah ditebak
-    if (!hiddenWord.includes("-")) {
-      alert("Selamat, kamu berhasil menebak kata!");
-      resetGame();
-    }
+    alert("Selamat, kamu berhasil menebak kata!");
+    resetGame();
   } else {
     alert("Tebakan salah, coba lagi!");
   }
@@ -63,10 +50,26 @@ guessButton.addEventListener("click", function() {
 
 // Event listener saat tombol Petunjuk 1 Huruf ditekan
 hintButton.addEventListener("click", function() {
-  var randomIndex = Math.floor(Math.random() * selectedWord.length);
+  var indices = [];
+  for (var k = 0; k < selectedWord.length; k++) {
+    if (hiddenWord[k] === "-") {
+      indices.push(k);
+    }
+  }
+  
+  // Jika tidak ada garis yang tersisa, tidak ada petunjuk yang bisa ditampilkan
+  if (indices.length === 0) {
+    alert("Tidak ada petunjuk yang tersedia.");
+    return;
+  }
+  
+  var randomIndex = indices[Math.floor(Math.random() * indices.length)];
   hiddenWord[randomIndex] = selectedWord[randomIndex];
   wordDisplay.textContent = hiddenWord.join(" ");
 });
+
+// Tampilkan petunjuk kata
+hintElement.textContent = hints[selectedWord];
 
 // Fungsi untuk mengulang permainan
 function resetGame() {
@@ -81,3 +84,5 @@ function resetGame() {
   wordDisplay.textContent = hiddenWord.join(" ");
   hintElement.textContent = hints[selectedWord];
 }
+
+
