@@ -1,54 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>E-book Viewer</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
+<style>
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
 
-        #pdf-viewer {
-            width: 100%;
-            height: 100vh;
-        }
-    </style>
+.mySlides {
+  display: none;
+  text-align: center;
+}
+
+.slideshow-image {
+  max-width: 70%;
+  height: auto;
+}
+
+.slideshow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #f1f1f1;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+</style>
 </head>
 <body>
-    <div id="pdf-viewer"></div>
 
-    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-    <script>
-        // Ubah URL berikut sesuai dengan URL PDF yang ingin ditampilkan
-        const pdfUrl = 'https://www.africau.edu/images/default/sample.pdf';
+<div class="slideshow-container">
+  <div class="mySlides">
+    <img class="slideshow-image" src="https://hancau.net/wp-content/uploads/2023/06/rekrutmen-apahabar-2023-2.png" alt="Gambar 1">
+  </div>
 
-        // Inisialisasi PDF.js
-        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+  <div class="mySlides">
+    <img class="slideshow-image" src="https://hancau.net/wp-content/uploads/2023/06/rekrutmen-apahabar-2023-1.png" alt="Gambar 2">
+  </div>
 
-        loadingTask.promise.then(function(pdf) {
-            // Mengambil halaman pertama dari PDF
-            pdf.getPage(1).then(function(page) {
-                const scale = 1.5;
-                const viewport = page.getViewport({ scale: scale });
+  <a class="slideshow-button prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="slideshow-button next" onclick="changeSlide(1)">&#10095;</a>
+</div>
 
-                // Membuat elemen <canvas> sebagai tempat render PDF
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
+<script>
+var slideIndex = 0;
+showSlides(slideIndex);
 
-                // Menambahkan elemen <canvas> ke dalam div dengan id 'pdf-viewer'
-                document.getElementById('pdf-viewer').appendChild(canvas);
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n >= slides.length) {slideIndex = 0}
+  if (n < 0) {slideIndex = slides.length - 1}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
 
-                // Render halaman PDF ke dalam <canvas>
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            });
-        });
-    </script>
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+</script>
+
 </body>
 </html>
