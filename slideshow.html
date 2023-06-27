@@ -51,4 +51,38 @@ function changeSlide(n) {
 
 </script>
 
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+<script>
+  var slideIndex = 0;
+  var slides = document.getElementsByClassName("mySlides");
+
+  showSlides(slideIndex);
+
+  var slideshowContainer = document.querySelector('.slideshow-container');
+  var hammer = new Hammer(slideshowContainer);
+
+  hammer.on('swipeleft', function() {
+    changeSlide(1);
+  });
+
+  hammer.on('swiperight', function() {
+    changeSlide(-1);
+  });
+
+  function showSlides(n) {
+    if (n >= slides.length) { slideIndex = 0; }
+    if (n < 0) { slideIndex = slides.length - 1; }
+    
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    
+    slides[slideIndex].style.display = "flex";
+  }
+
+  function changeSlide(n) {
+    showSlides(slideIndex += n);
+  }
+</script>
+
   
