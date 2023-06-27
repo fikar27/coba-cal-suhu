@@ -1,0 +1,51 @@
+<div class="slideshow-container" style="position: relative;  max-width: 100%;  margin: auto;">
+  <div class="mySlides" style="display: none;
+  text-align: center; justify-content: center;">
+    <img style="max-width: 70%;  height: auto;" class="slideshow-image" src="https://hancau.net/wp-content/uploads/2023/06/rekrutmen-apahabar-2023-3.png" alt="Gambar 1">
+  </div>
+
+  <div class="mySlides" style="display: none;  text-align: center; justify-content: center;">
+    <img style="max-width: 70%;  height: auto;" class="slideshow-image" src="https://hancau.net/wp-content/uploads/2023/06/rekrutmen-apahabar-2023-1.png" alt="Gambar 2">
+  </div>
+
+  <a style="position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #f1f1f1;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer; left: 10px;" class="slideshow-button prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a style="position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #f1f1f1;
+  color: #000;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer; right: 10px;" class="slideshow-button next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides(slideIndex);
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n >= slides.length) {slideIndex = 0}
+  if (n < 0) {slideIndex = slides.length - 1}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "flex";
+}
+
+function changeSlide(n) {
+  showSlides(slideIndex += n);
+}
+</script>
