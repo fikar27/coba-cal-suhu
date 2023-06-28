@@ -1,4 +1,37 @@
-button {
-    margin: 50px;
-    
-}
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  #youtube-results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .youtube-video {
+    width: 300px;
+    margin: 10px;
+  }
+  
+  .youtube-thumbnail {
+    width: 100%;
+  }
+  
+  .youtube-title {
+    margin-top: 10px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .youtube-description {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  
